@@ -93,12 +93,12 @@ function Sentence({ prog, count, reduce }: { prog: Progress; count: number; redu
       const lines = wrapLines(g, story.question, 1100);
       g.fillStyle = "#fff";
       g.textBaseline = "top";
-      lines.forEach((l, i) => g.fillText(l, 40, 20 + i * 112));
+      g.lineWidth = 3; g.strokeStyle = "#fff"; lines.forEach((l, i) => { g.strokeText(l, 40, 20 + i * 112); g.fillText(l, 40, 20 + i * 112); });
       const img = g.getImageData(0, 0, c.width, c.height).data;
       const px: number[] = [];
       let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-      for (let y = 0; y < c.height; y += 3) {
-        for (let x = 0; x < W; x += 3) {
+      for (let y = 0; y < c.height; y += 2) {
+        for (let x = 0; x < W; x += 2) {
           if (img[(y * W + x) * 4 + 3] > 128) {
             px.push(x, y);
             if (x < minX) minX = x;
@@ -149,7 +149,7 @@ function Sentence({ prog, count, reduce }: { prog: Progress; count: number; redu
       const mat = new THREE.PointsMaterial({
         map: sprite,
         color: IVORY,
-        size: 0.075,
+        size: 0.045,
         sizeAttenuation: true,
         transparent: true,
         depthWrite: false,
@@ -694,7 +694,7 @@ export default function StoryScene({
     >
       <CameraRig prog={prog} reduce={reduce} />
       <Layout>
-        <Sentence prog={prog} count={mobile ? 350 : 700} reduce={reduce} />
+        <Sentence prog={prog} count={mobile ? 900 : 2200} reduce={reduce} />
         <Orbs prog={prog} reduce={reduce} />
         <Sources prog={prog} reduce={reduce} />
         <Cards prog={prog} />

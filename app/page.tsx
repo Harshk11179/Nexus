@@ -13,7 +13,6 @@ import Marquee from "@/components/Marquee";
 import Bento from "@/components/Bento";
 import Trace from "@/components/Trace";
 import Stats from "@/components/Stats";
-import Stack from "@/components/Stack";
 import Pricing from "@/components/Pricing";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
@@ -34,7 +33,6 @@ export default function Page() {
         <Bento />
         <Trace />
         <Stats />
-        <Stack />
         <Pricing />
         <FinalCta />
       </main>
