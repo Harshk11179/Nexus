@@ -79,6 +79,7 @@ const HEADING_RES = [
   /^[A-Z][A-Z0-9 ,&()\-\/:.]{6,100}$/, // ALL CAPS lines
 ];
 const isHeading = (l) => {
+  if (/^(PRONOUNCED|RESERVED|DATED|DATE OF|DECIDED|HEARD|JUDGMENT RESERVED)\b/i.test(l)) return false;
   if (l.length > 130 || !HEADING_RES.some((re) => re.test(l))) return false;
   // Sentences are not headings ("Schedule the Terms of Reference shall be conveyed along with ...")
   if (!/^\d+(\.\d+)*\.?\s/.test(l) && (wc(l) > 12 || /\b(shall|must|will|should|may be|conveyed|submitted)\b/.test(l))) return false;
