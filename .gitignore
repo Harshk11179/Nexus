@@ -2,3 +2,9 @@ node_modules
 .next
 next-env.d.ts
 *.log
+
+.env*
+
+.env*
+
+corpus/
